@@ -1,0 +1,8 @@
+rbc, 2
+td, 4
+cibc, 4
+sb, 3
+bmo, 6
+rbc, 3
+sb, 4
+td, 2

@@ -1,0 +1,3 @@
+docker ps to get container ID
+docker exec -ti --user root container_name/container_id bash
+apt-get update; apt-get install curl

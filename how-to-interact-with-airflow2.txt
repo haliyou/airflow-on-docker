@@ -1,0 +1,73 @@
+git clone https://github.com/neylsoncrepalde/docker-airflow.git
+cd docker-airflow
+docker build -t puckel/docker-airflow:2.1.0 .
+docker-compose -f docker-compose-CeleryExecutor.yml up
+
+****************************************************************
+
+C:\Users\s4670915>docker container ls
+CONTAINER ID   IMAGE                                   COMMAND                  CREATED          STATUS                    PORTS                                                                                                                                  NAMES
+04651490454d   neylsoncrepalde/airflow-docker:latest   "/entrypoint.sh cele…"   24 minutes ago   Up 24 minutes             5555/tcp, 8080/tcp, 8793/tcp                                                                                                           airflow2-on-docker_worker_1
+ca8d09ee15de   neylsoncrepalde/airflow-docker:latest   "/entrypoint.sh sche…"   24 minutes ago   Up 24 minutes             5555/tcp, 8080/tcp, 8793/tcp                                                                                                           airflow2-on-docker_scheduler_1
+104650ac99ea   neylsoncrepalde/airflow-docker:latest   "/entrypoint.sh webs…"   24 minutes ago   Up 24 minutes (healthy)   5555/tcp, 8793/tcp, 0.0.0.0:8080->8080/tcp                                                                                             airflow2-on-docker_webserver_1
+a2876367d276   neylsoncrepalde/airflow-docker:latest   "/entrypoint.sh cele…"   24 minutes ago   Up 24 minutes             8080/tcp, 0.0.0.0:5555->5555/tcp, 8793/tcp                                                                                             airflow2-on-docker_flower_1
+9de506694af9   redis:5.0.5                             "docker-entrypoint.s…"   24 minutes ago   Up 24 minutes             6379/tcp                                                                                                                               airflow2-on-docker_redis_1
+88cea9b92e96   postgres:9.6                            "docker-entrypoint.s…"   24 minutes ago   Up 24 minutes             5432/tcp                                                                                                                               airflow2-on-docker_postgres_1
+5e7f3179417e   quay.io/minio/minio                     "/usr/bin/docker-ent…"   3 days ago       Up 3 days                 0.0.0.0:9000-9001->9000-9001/tcp                                                                                                       infallible_turing
+819aca56f9b9   gcr.io/k8s-minikube/kicbase:v0.0.30     "/usr/local/bin/entr…"   2 weeks ago      Up 3 days                 127.0.0.1:62214->22/tcp, 127.0.0.1:62215->2376/tcp, 127.0.0.1:62217->5000/tcp, 127.0.0.1:62218->8443/tcp, 127.0.0.1:62216->32443/tcp   minikube
+
+C:\Users\s4670915>docker exec -it 88cea9b92e96 psql -d airflow -U airflow
+psql (9.6.24)
+Type "help" for help.
+
+airflow=# \dt+
+airflow=# \dt+
+                                  List of relations
+ Schema |             Name              | Type  |  Owner  |    Size    | Description
+--------+-------------------------------+-------+---------+------------+-------------
+ public | ab_permission                 | table | airflow | 8192 bytes |
+ public | ab_permission_view            | table | airflow | 8192 bytes |
+ public | ab_permission_view_role       | table | airflow | 40 kB      |
+ public | ab_register_user              | table | airflow | 8192 bytes |
+ public | ab_role                       | table | airflow | 8192 bytes |
+ public | ab_user                       | table | airflow | 16 kB      |
+ public | ab_user_role                  | table | airflow | 8192 bytes |
+ public | ab_view_menu                  | table | airflow | 8192 bytes |
+ public | alembic_version               | table | airflow | 40 kB      |
+ public | celery_taskmeta               | table | airflow | 16 kB      |
+ public | celery_tasksetmeta            | table | airflow | 8192 bytes |
+ public | connection                    | table | airflow | 32 kB      |
+ public | dag                           | table | airflow | 48 kB      |
+ public | dag_code                      | table | airflow | 128 kB     |
+ public | dag_pickle                    | table | airflow | 8192 bytes |
+ public | dag_run                       | table | airflow | 16 kB      |
+ public | dag_tag                       | table | airflow | 40 kB      |
+ public | import_error                  | table | airflow | 8192 bytes |
+ public | job                           | table | airflow | 48 kB      |
+ public | log                           | table | airflow | 16 kB      |
+ public | rendered_task_instance_fields | table | airflow | 16 kB      |
+ public | sensor_instance               | table | airflow | 8192 bytes |
+ public | serialized_dag                | table | airflow | 128 kB     |
+ public | sla_miss                      | table | airflow | 8192 bytes |
+ public | slot_pool                     | table | airflow | 16 kB      |
+ public | task_fail                     | table | airflow | 8192 bytes |
+ public | task_instance                 | table | airflow | 16 kB      |
+ public | task_reschedule               | table | airflow | 8192 bytes |
+ public | variable                      | table | airflow | 8192 bytes |
+ public | xcom                          | table | airflow | 16 kB      |
+(30 rows)
+
+airflow=#
+airflow=#
+airflow=#
+airflow=#
+airflow=#
+airflow=#
+airflow=# select * from dag_run;
+ id |      dag_id      |        execution_date         |  state  |                  run_id                  | external_trigger |     conf     |           end_date            |          start_date           | run_type |   last
+_scheduling_decision    |             dag_hash             | creating_job_id
+----+------------------+-------------------------------+---------+------------------------------------------+------------------+--------------+-------------------------------+-------------------------------+----------+-------
+------------------------+----------------------------------+-----------------
+  1 | tutorial_etl_dag | 2022-04-26 12:09:25.717894+00 | success | manual__2022-04-26T12:09:25.717894+00:00 | t                | \x80057d942e | 2022-04-26 12:09:29.502746+00 | 2022-04-26 12:09:25.720671+00 | manual   | 2022-0
+4-26 12:09:29.500756+00 | 18c172fbab5ab96e11c0a7ec379e22e8 |
+(1 row)

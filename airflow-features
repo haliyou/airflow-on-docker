@@ -1,0 +1,29 @@
+--Open Source / Python — Airflow is developed in Python and it’s very easy to design your workflow. You can contribute your plugins in open source and 
+also use other plugins based on your requirement.
+--Monitoring — You can easily monitor your task status once it is running. Airflow provides all the necessary details of each task such as execution 
+time, landing time, logs, etc.
+--Smart Scheduling — You can schedule your task however you want to. For example, if you want to schedule your task to run every Sunday at 4:00 PM, 
+you can do it.
+--Managing Dependency — One of the cool features which make airflow better than all other tool is proper management of dependency. If a task t2 is 
+dependent on task t1 which is further dependent on task t0, you can set dependency across.
+--Resilience — All workflow tools sometimes behave unexpectedly, may it be any reason such as network issues, human error, taking a longer time than 
+expected, etc. Airflow has several features such as retry. If by any chance, your task failed to execute, airflow retires it after a certain minute, 
+(If it might have failed due to other reasons such as network issue, then retry might make that task successful).
+It even gives an alert message to the team via email/slack, which I will demo it later.
+--Alerting — This is one of the coolest feature airflows have, if you want your team should get notified if any of your tasks get fail, it will notify 
+via Mail, slack notification. Even if your task gets successful, you may want to get notified, airflow has that feature too.
+--Service Level Agreement (SLA) Timeout: This might be one of the most crucial features (Al least for some company) which airflow has provided. 
+If your task takes generally 500 sec to finish, but one certain day, it took 1500 seconds, don’t you think something unexpected happened?
+Wouldn’t you like to get notified? You may have your own reason to store these records, maybe for analytic purposes or any other research work.
+Example: Suppose your company collects user registration data at the end of the day, but you have noticed that every Saturday your task is taking 
+a lot of time that means people on Saturday are more to participate.
+
+-- User Interface — It has a good UI which makes it more approachable for the user. You can view the task in a well-formatted tree structure, 
+you can view the logs details, airflow database, task duration, lading times, rich graph view in UI.
+
+-- Plugins and hooks — Airflow has got various pre-defined plugins and also user-defined plugins which makes your task easy.
+you even can make your own operators in airflow and manipulate it to work as you like it to behave
+
+--Cloud services — Cloud platforms like Google cloud shows its support to apache- airflow. Cloud composer — is a google service that creates
+ an environment of apache — airflow in google cloud. You can perform almost everything and use cloud services such as Google BigQuery, Dataproc,
+ Dataflow, etc

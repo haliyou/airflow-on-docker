@@ -1,0 +1,38 @@
+{   "coord": 
+    {
+        "lon": -79.4163, 
+        "lat": 43.7001
+    }, 
+    "weather": [{"id": 701, "main": "Mist", "description": "mist", "icon": "50n"}], 
+    "base": "stations", 
+    "main": 
+    {   
+        "temp": 284.08, 
+        "feels_like": 283.71, 
+        "temp_min": 283.26, 
+        "temp_max": 284.53, 
+        "pressure": 1010, 
+        "humidity": 95
+    }, 
+    "visibility": 10000, 
+    "wind": 
+    {
+        "speed": 11.32, 
+        "deg": 50, 
+        "gust": 14.4        
+    }, 
+    "clouds": {"all": 100}, 
+    "dt": 1651629244, 
+    "sys":
+    {
+        "type": 1, 
+        "id": 718, 
+        "country": "CA", 
+        "sunrise": 1651572424, 
+        "sunset": 1651623712
+    }, 
+    "timezone": -14400, 
+    "id": 6167865, 
+    "name": "Toronto", 
+    "cod": 200
+}

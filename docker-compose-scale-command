@@ -1,0 +1,12 @@
+docker build -t puckel/docker-airflow:2.1.0 .
+
+docker-compose -f docker-compose-CeleryExecutor.yml up
+
+
+
+C:\gdap\airflow\airflow2-on-docker>docker-compose -f docker-compose-CeleryExecutor.yml scale worker=5
+WARNING: The scale command is deprecated. Use the up command with the --scale flag instead.
+Creating airflow2-on-docker_worker_2 ... done
+Creating airflow2-on-docker_worker_3 ... done
+Creating airflow2-on-docker_worker_4 ... done
+Creating airflow2-on-docker_worker_5 ... done

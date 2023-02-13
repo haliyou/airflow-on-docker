@@ -1,0 +1,14 @@
+#https://ondata.blog/articles/getting-started-apache-spark-pyspark-and-jupyter-in-a-docker-container/
+#docker command to execute sparksubmit in docker container from outer side of container world
+
+PS C:\gdap\airflow\airflow2-on-docker> docker exec -it 7c443608aa83 /usr/local/spark/bin/spark-submit /home/jovyan/work/countKT.py
+
+#run sparksubmit from docker internal world
+
+PS C:\gdap\airflow\airflow2-on-docker> docker exec -it --user root b1d12150a5da  bash
+(base) root@7c443608aa83:~# pwd
+/home/jovyan
+(base) root@7c443608aa83:~# find / -name pyspark
+(base) root@7c443608aa83:~# ../../../usr/local/spark/bin/spark-submit ./work/countKT.py
+
+#install spark locally and run it from local to test

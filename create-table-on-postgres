@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS weather (city TEXT,country     TEXT, latitude    REAL,longitude   REAL,todays_date DATE,humidity    REAL,pressure    REAL, min_temp    REAL, max_temp    REAL,temp        REAL, weather     TEXT  );

@@ -1,0 +1,15 @@
+#launch bitnami-docker-spark
+
+cd gdap/spark/bitnami-docker-spark
+docker-compose up
+
+#once spark launched, copy spark://2098038080890:7077 from spark admin web UI
+
+#Launch pyspark
+docker run -p 8888:8888 -p 4040:4040 -v c:\gdap\airflow\airflow2-on-docker\spark:/home/jovyan/work --name spark jupyter/pyspark-notebook
+
+#once pyspark launched, get pyspark container id
+docker container ls
+
+PS C:\gdap\airflow\airflow2-on-docker\spark> docker exec -it --user root b1d12150a5da  bash
+(base) root@b1d12150a5da:~# ../../usr/local/spark/bin/spark-shell spark://28db6295ef9f:7077

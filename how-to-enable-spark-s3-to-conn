@@ -1,0 +1,8 @@
+https://airflow.apache.org/docs/apache-airflow/stable/extra-packages-ref.html#apache-software-extras
+
+s3 enable
+PS C:\gdap\airflow\airflow2-on-docker> docker exec -it 5cdcf60d5d61 bash
+airflow@5cdcf60d5d61:~$ pip install 'apache-airflow[amazon]'
+spark enable
+PS C:\gdap\airflow\airflow2-on-docker> docker exec -it 5cdcf60d5d61 bash
+airflow@5cdcf60d5d61:~$ pip install 'apache-airflow[apache.spark]'

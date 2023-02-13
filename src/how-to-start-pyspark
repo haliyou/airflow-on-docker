@@ -1,0 +1,45 @@
+https://towardsdatascience.com/apache-spark-on-windows-a-docker-approach-4dd05d8a7147
+
+#This command pulls the jupyter/pyspark-notebook image from Docker Hub if it is not already present on the localhost.
+
+# It then starts a container with name=pyspark running a Jupyter Notebook server and exposes the server on host port 8888, 4040 will
+# be effective only spark is running on background
+docker run -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes --name pyspark jupyter/pyspark-notebook
+#map local folder into container folder
+docker run -p 8888:8888 -p 4040:4040 -v c:\gdap\airflow\airflow2-on-docker\spark:/home/jovyan/work --name spark jupyter/pyspark-notebook
+docker start -a pyspark
+
+#how to copy file to container
+1:> Copy from host/local to container
+    1: get container name or ID
+        docker ps
+    2: PS C:\gdap\airflow\airflow2-on-docker> docker cp train.csv b1d12150a5da:./home/jovyan/train.csv
+
+
+2:> copy from container to host/local
+    docker cp container_id:./home/jovyan/train.csv .
+
+3:> copy file from container to a container
+    docker cp container_id1:./bar/foo.txt .
+
+    docker exec -i container_id2 sh -c 'cat > ./bar/foo.txt' < ./foo.txt
+
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.master("local[*]").appName("spark_on_docker").getOrCreate()
+#Download 
+#read the file and count how many rows have the word Jupyter
+textFile = spark.read.text("README.md")
+rows_with_jupyter = textFile.filter(textFile.value.contains("Jupyter")).count()
+
+print("There's %d rows with the word Jupyter."%rows_with_jupyter)
+There's 21 rows with the word Jupyter.
+#print the session status
+spark
+SparkSession - in-memory
+
+SparkContext
+
+Spark UI
+
+Versionv3.1.1Masterlocal[*]AppNamespark_on_docker
+ 
